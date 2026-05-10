@@ -1,0 +1,6 @@
+@RoomDecor.API_HostAddress = http://localhost:5242
+
+GET {{RoomDecor.API_HostAddress}}/weatherforecast/
+Accept: application/json
+
+###
