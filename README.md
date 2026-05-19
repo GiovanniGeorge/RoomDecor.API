@@ -19,10 +19,15 @@ This project is perfectly tailored to be consumed by front-end clients (like a F
 - Users can input their room dimensions (Length, Width, Area) and preferred design **Style**.
 - The API processes these inputs and returns tailored room design recommendations, complete with confidence scores and direct image URLs.
 
-### 3. 👁️ Visual Search & Similar Designs (Vision AI)
-- Allows users to find similar room designs based on a selected image.
+### 3. 👁️ Visual Search & Image Uploads (Vision AI)
+- Allows users to find similar room designs based on a selected image ID.
+- **Image Upload Support:** Users can directly upload their own room pictures (`multipart/form-data`) to find visually similar styles.
 - Communicates with a Computer Vision model to analyze image features and return the top visually similar rooms.
-- Supports handling complex image layers, such as separated foregrounds/transparent images.
+
+### 4. 🤖 Interactive Interior Designer Chatbot
+- Integrates with Gemini / ChatGPT through the Python AI server.
+- Users can send text questions and optionally attach images to receive expert interior design advice.
+- The AI responds contextually, offering suggestions for room decor, color palettes, and styling.
 
 ---
 

@@ -1,3 +1,6 @@
+using Microsoft.AspNetCore.Http;
+using Microsoft.AspNetCore.Mvc;
+using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.Text.Json.Serialization;
 
@@ -55,13 +58,22 @@ namespace RoomDecor.API.Models
         [JsonPropertyName("top_n")] public int TopN { get; set; } = 5;
     }
 
+    public class VisionUploadRequestDto
+    {
+        [Required]
+        public IFormFile Image { get; set; }
+        
+        [FromForm(Name = "top_n")]
+        public int TopN { get; set; } = 5;
+    }
+
     public class VisionResponseRoot
     {
+        [JsonPropertyName("designer_advice")]
+        public string DesignerAdvice { get; set; }
+
         [JsonPropertyName("selected_image")]
         public string SelectedImage { get; set; }
-
-        [JsonPropertyName("foreground_image")]
-        public string ForegroundImage { get; set; }
 
         [JsonPropertyName("similar_images")]
         public List<VisionItemDto> SimilarImages { get; set; }
@@ -72,5 +84,21 @@ namespace RoomDecor.API.Models
         [JsonPropertyName("id")] public string Id { get; set; }
         [JsonPropertyName("similarity_score")] public double SimilarityScore { get; set; }
         public string ImageUrl { get; set; }
+    }
+
+    public class ChatRequestDto
+    {
+        [Required]
+        [FromForm(Name = "message")]
+        public string Message { get; set; }
+
+        [FromForm(Name = "image")]
+        public IFormFile? Image { get; set; }
+    }
+
+    public class ChatResponseDto
+    {
+        [JsonPropertyName("reply")]
+        public string Reply { get; set; }
     }
 }
